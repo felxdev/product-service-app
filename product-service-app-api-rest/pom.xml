@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.capitole.products</groupId>
+    <artifactId>product-service-app</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>product-service-app-api-rest</artifactId>
+
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+
+    <!-- Module dependencies -->
+    <dependency>
+        <groupId>${parent.groupId}</groupId>
+        <artifactId>${parent.artifactId}-domain</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>${parent.groupId}</groupId>
+      <artifactId>${parent.artifactId}-application</artifactId>
+    </dependency>
+
+    <!--  Generate openapi dependencies -->
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+      <version>1.8.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.swagger.parser.v3</groupId>
+      <artifactId>swagger-parser-v3</artifactId>
+      <version>2.1.18</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.openapitools</groupId>
+      <artifactId>jackson-databind-nullable</artifactId>
+      <version>0.2.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openapitools</groupId>
+      <artifactId>openapi-generator</artifactId>
+      <version>7.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate-validator.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.openapitools</groupId>
+        <artifactId>openapi-generator-maven-plugin</artifactId>
+        <version>7.1.0</version>
+        <configuration>
+          <generatorName>spring</generatorName>
+          <supportingFilesToGenerate>
+            ApiUtil.java
+          </supportingFilesToGenerate>
+          <configOptions>
+            <interfaceOnly>true</interfaceOnly>
+            <delegatePattern>true</delegatePattern>
+            <serializableModel>true</serializableModel>
+            <generateModelTests>true</generateModelTests>
+            <generateApiTests>true</generateApiTests>
+            <useBeanValidation>true</useBeanValidation>
+            <performBeanValidation>true</performBeanValidation>
+            <!-- Param to generate reactive endpoints -->
+            <reactive>true</reactive>
+            <additionalProperties>
+              <additionalProperty>modelNamePrefix=Dto</additionalProperty>
+            </additionalProperties>
+            <useTags>true</useTags>
+          </configOptions>
+        </configuration>
+        <executions>
+          <execution>
+            <id>generate-objects</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/productServiceApiRest.yml</inputSpec>
+              <configOptions>
+                <useJakartaEe>true</useJakartaEe>
+                <sourceFolder>product-service-app-api-rest</sourceFolder>
+                <apiPackage>${project.groupId}.api.rest.controllers</apiPackage>
+                <modelPackage>${project.groupId}.api.rest.dtos</modelPackage>
+                <invokerPackage>${project.groupId}.api.rest.invokers</invokerPackage>
+              </configOptions>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

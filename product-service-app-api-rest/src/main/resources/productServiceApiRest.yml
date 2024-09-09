@@ -1,0 +1,134 @@
+openapi: 3.0.3
+info:
+  title: Product service - OpenAPI 3.0
+  description: |-
+    This is the Product Service spec based on the OpenAPI 3.0 specification.
+  version: "1.0-SNAPSHOT"
+servers:
+  - url: https//localhost
+tags:
+  - name: products
+    description: Products operations
+paths:
+  /v1/rates:
+    get:
+      tags:
+        - rates
+      summary: Get a rate info by product ID
+      description: Retrieve product rate details by product ID.
+      operationId: getRateByProductId
+      parameters:
+        - name: applicationDate
+          in: query
+          required: true
+          description: Date and time for which the price should be applied
+          schema:
+            type: string
+            format: date-time
+          example: '2020-06-14T10:00:00'
+        - name: productId
+          in: query
+          required: true
+          description: Identifier of the product
+          schema:
+            type: integer
+          example: 35455
+        - name: brandId
+          in: query
+          required: true
+          description: Identifier of the chain/brand (1 = ZARA)
+          schema:
+            type: integer
+          example: 1
+      responses:
+        '201':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateInfo'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  schemas:
+    RateInfo:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: ID of the product
+          example: "1"
+        brandId:
+          type: integer
+          description: Group chain ID
+          example: "1"
+        price:
+          $ref: '#/components/schemas/Amount'
+        appliedRateId:
+          type: integer
+          description: Identifier of the applicable price rate.
+          example: 3
+        startDate:
+          type: string
+          format: date
+          description: Start date range in which the indicated price rate start to applies.
+          example: "2024-04-22"
+        endDate:
+          type: string
+          format: date
+          description: End date range in which the indicated price rate end to applies.
+          example: "2024-04-22"
+
+    Amount:
+      type: object
+      description: Amount of money. Negative values may indicate refunds or any other inverse flow of money depending on the context where this object is used.
+      required:
+        - value
+        - currency
+        - exponent
+      properties:
+        value:
+          type: integer
+          format: int64
+          description: monetary value
+          example: 1704
+        currency:
+          type: string
+          description: ISO 4217 currency CODE
+          example: EUR
+        exponent:
+          type: integer
+          description: decimal index (value / 10^exponent)
+          default: 0
+          example: 2
+    Error:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: integer
+          description: |
+            The error codes:
+            [0] Bad request (see message for details)
+            [1] Rate not found
+        message:
+          type: string
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
