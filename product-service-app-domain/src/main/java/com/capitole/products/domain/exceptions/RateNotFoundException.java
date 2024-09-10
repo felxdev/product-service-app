@@ -4,7 +4,9 @@ import static com.capitole.products.domain.exceptions.ApplicationExceptionCode.R
 
 public class RateNotFoundException extends ApplicationException {
 
-  public RateNotFoundException(String id) {
-    super(RATE_NOT_FOUND_EXCEPTION, String.format("Not found rate by product id: '%s'", id));
+  public RateNotFoundException(String productId, Integer brandId, String date) {
+    super(RATE_NOT_FOUND_EXCEPTION,
+        String.format("Not found rate with product id: '%s', brand id: '%s' and date: '%s'",
+            productId, brandId, date));
   }
 }
