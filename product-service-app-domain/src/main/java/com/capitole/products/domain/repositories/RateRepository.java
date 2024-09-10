@@ -5,5 +5,5 @@ import reactor.core.publisher.Mono;
 
 public interface RateRepository {
 
-  Mono<Rate> findByProductIdAndBrandIdAndDate(String productId, String brandId, String date);
+  Mono<Rate> findByProductIdAndBrandIdAndDate(String productId, Integer brandId, String date);
 }
