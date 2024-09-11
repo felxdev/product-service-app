@@ -38,4 +38,21 @@ public class PricesEntity {
 
   @Column(name = "CURR")
   private String currency;
+
+  public PricesEntity(PricesId id, String brandId, LocalDate startDate, LocalDate endDate,
+      String priceList, String productId, String priority, Double price, String currency) {
+    this.id = id;
+    this.brandId = brandId;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.priceList = priceList;
+    this.productId = productId;
+    this.priority = priority;
+    this.price = price;
+    this.currency = currency;
+  }
+
+  public PricesEntity() {
+
+  }
 }

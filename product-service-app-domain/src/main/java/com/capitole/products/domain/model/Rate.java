@@ -6,6 +6,7 @@ import lombok.Builder;
 @Builder
 public record Rate(
     String productId,
+    String brandId,
     LocalDate startDate,
     LocalDate endDate,
     Integer appliedRate,

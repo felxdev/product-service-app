@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 
 @Repository
-public interface PriceRepositoryR2dbc extends ReactiveCrudRepository<PricesEntity, PricesId> {
+public interface PricesRepositoryR2dbc extends ReactiveCrudRepository<PricesEntity, PricesId> {
 
   Flux<PricesEntity> findByProductIdAndBrandIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(
       String productId, String brandId, LocalDate date);
