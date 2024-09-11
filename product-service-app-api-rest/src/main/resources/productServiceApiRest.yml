@@ -16,7 +16,7 @@ paths:
         - rates
       summary: Get a rate info by product ID
       description: Retrieve product rate details by product ID.
-      operationId: getRateByProductId
+      operationId: getRateByProductIdAndBrandIdAndDate
       parameters:
         - name: applicationDate
           in: query
@@ -24,7 +24,7 @@ paths:
           description: Date and time for which the price should be applied
           schema:
             type: string
-            format: date-time
+            format: date
           example: '2020-06-14T10:00:00'
         - name: productId
           in: query
@@ -41,7 +41,7 @@ paths:
             type: integer
           example: 1
       responses:
-        '201':
+        '200':
           description: successful operation
           content:
             application/json:
