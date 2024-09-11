@@ -5,9 +5,9 @@ import lombok.Builder;
 
 @Builder
 public record FindRateByProductIdAndApplicationDateAndBrandIdQuery(
-    Integer productId,
+    String productId,
     LocalDate applicationDate,
-    Integer brandId
+    String brandId
 ) implements Query {
 
 }

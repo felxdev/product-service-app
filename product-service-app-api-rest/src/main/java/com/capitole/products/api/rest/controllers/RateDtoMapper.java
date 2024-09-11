@@ -1,7 +1,9 @@
 package com.capitole.products.api.rest.controllers;
 
+import com.capitole.products.api.rest.dtos.AmountDto;
 import com.capitole.products.api.rest.dtos.RateInfoDto;
 import com.capitole.products.application.queries.FindRateByProductIdAndApplicationDateAndBrandIdQuery;
+import com.capitole.products.domain.model.Amount;
 import com.capitole.products.domain.model.Rate;
 import java.time.LocalDate;
 import org.mapstruct.CollectionMappingStrategy;
@@ -18,4 +20,6 @@ public interface RateDtoMapper {
       Integer productId, LocalDate applicationDate, Integer brandId);
 
   RateInfoDto asRateInfoDto(Rate rate);
+
+  AmountDto asAmountDto(Amount amount);
 }

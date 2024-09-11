@@ -9,6 +9,7 @@ public record Rate(
     LocalDate startDate,
     LocalDate endDate,
     Integer appliedRate,
+    String priority,
     Amount price
 ) {
 
