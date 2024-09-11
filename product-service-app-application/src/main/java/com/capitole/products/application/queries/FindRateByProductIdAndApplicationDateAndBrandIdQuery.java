@@ -1,12 +1,12 @@
 package com.capitole.products.application.queries;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.Builder;
 
 @Builder
 public record FindRateByProductIdAndApplicationDateAndBrandIdQuery(
     String productId,
-    LocalDate applicationDate,
+    LocalDateTime applicationDate,
     String brandId
 ) implements Query {
 

@@ -5,7 +5,7 @@ import com.capitole.products.api.rest.dtos.RateInfoDto;
 import com.capitole.products.application.queries.FindRateByProductIdAndApplicationDateAndBrandIdQuery;
 import com.capitole.products.domain.model.Amount;
 import com.capitole.products.domain.model.Rate;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import org.mapstruct.CollectionMappingStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,7 +18,7 @@ import org.mapstruct.NullValueMappingStrategy;
 public interface RateDtoMapper {
 
   FindRateByProductIdAndApplicationDateAndBrandIdQuery asFindRateByProductIdAndApplicationDateAndBrandIdQuery(
-      Integer productId, LocalDate applicationDate, Integer brandId);
+      Integer productId, LocalDateTime applicationDate, Integer brandId);
 
   @Mapping(target = "appliedRateId", source = "appliedRate")
   RateInfoDto asRateInfoDto(Rate rate);

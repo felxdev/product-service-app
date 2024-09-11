@@ -3,7 +3,7 @@ package com.capitole.products.infrastructure.repositories.entitydb;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
@@ -14,7 +14,7 @@ public class PricesId implements Serializable {
   private String brandId;
 
   @Column(name = "START_DATE")
-  private LocalDate startDate;
+  private LocalDateTime startDate;
 
   @Column(name = "PRICE_LIST")
   private String priceList;
@@ -22,7 +22,7 @@ public class PricesId implements Serializable {
   @Column(name = "PRODUCT_ID")
   private String productId;
 
-  public PricesId(String brandId, LocalDate startDate, String priceList, String productId) {
+  public PricesId(String brandId, LocalDateTime startDate, String priceList, String productId) {
     this.brandId = brandId;
     this.startDate = startDate;
     this.priceList = priceList;

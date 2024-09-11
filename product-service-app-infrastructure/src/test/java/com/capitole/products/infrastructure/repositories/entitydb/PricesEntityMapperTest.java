@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.capitole.products.domain.model.Amount;
 import com.capitole.products.domain.model.Rate;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
@@ -25,8 +25,8 @@ class PricesEntityMapperTest {
         .productId("35455")
         .brandId("1")
         .priority("1")
-        .startDate(LocalDate.of(2025, 3, 24))
-        .endDate(LocalDate.of(2025, 3, 24))
+        .startDate(LocalDateTime.of(2025, 3, 24, 10, 0))
+        .endDate(LocalDateTime.of(2025, 3, 24, 10, 0))
         .price(Amount.builder().value(355).currency("EUR").exponent(1).build())
         .appliedRate(1)
         .build();

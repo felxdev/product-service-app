@@ -1,6 +1,6 @@
 package com.capitole.products.infrastructure.repositories.entitydb;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class PricesObjectMother {
 
@@ -21,11 +21,11 @@ public class PricesObjectMother {
     return new PricesId("1", startDate(), "1", "35455");
   }
 
-  private static LocalDate startDate() {
-    return LocalDate.of(2025, 3, 24);
+  private static LocalDateTime startDate() {
+    return LocalDateTime.of(2025, 3, 24, 10, 0);
   }
 
-  private static LocalDate endDate() {
-    return LocalDate.of(2025, 3, 24);
+  private static LocalDateTime endDate() {
+    return LocalDateTime.of(2025, 3, 24, 10, 0);
   }
 }

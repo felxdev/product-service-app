@@ -7,7 +7,7 @@ import com.capitole.products.api.rest.dtos.RateInfoDto;
 import com.capitole.products.application.queries.FindRateByProductIdAndApplicationDateAndBrandIdQuery;
 import com.capitole.products.domain.model.Amount;
 import com.capitole.products.domain.model.Rate;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
@@ -23,12 +23,12 @@ class RateDtoMapperTest {
     // Given
     FindRateByProductIdAndApplicationDateAndBrandIdQuery expected = FindRateByProductIdAndApplicationDateAndBrandIdQuery.builder()
         .productId("35455")
-        .applicationDate(LocalDate.of(2025, 3, 24))
+        .applicationDate(LocalDateTime.of(2025, 3, 24, 10, 0))
         .brandId("1")
         .build();
     // When
     FindRateByProductIdAndApplicationDateAndBrandIdQuery actual = mapper.asFindRateByProductIdAndApplicationDateAndBrandIdQuery(
-        35455, LocalDate.of(2025, 3, 24), 1);
+        35455, LocalDateTime.of(2025, 3, 24, 10, 0), 1);
 
     // Then
     assertThat(actual).isEqualTo(expected);
@@ -44,8 +44,8 @@ class RateDtoMapperTest {
     Rate rate = Rate.builder()
         .productId("35455")
         .brandId("1")
-        .startDate(LocalDate.of(2025, 6, 14))
-        .endDate(LocalDate.of(2025, 6, 14))
+        .startDate(LocalDateTime.of(2025, 6, 14, 10, 0))
+        .endDate(LocalDateTime.of(2025, 6, 14, 10, 0))
         .price(Amount.builder()
             .value(355)
             .currency("EUR")
@@ -56,8 +56,8 @@ class RateDtoMapperTest {
     RateInfoDto expected = new RateInfoDto();
     expected.setProductId("35455");
     expected.setBrandId(1);
-    expected.setStartDate(LocalDate.of(2025, 6, 14));
-    expected.setEndDate(LocalDate.of(2025, 6, 14));
+    expected.setStartDate(LocalDateTime.of(2025, 6, 14, 10, 0));
+    expected.setEndDate(LocalDateTime.of(2025, 6, 14, 10, 0));
     expected.setPrice(amountDto);
     expected.appliedRateId(1);
 

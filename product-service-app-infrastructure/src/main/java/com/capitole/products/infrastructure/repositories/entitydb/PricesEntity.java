@@ -4,7 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
@@ -19,10 +19,10 @@ public class PricesEntity {
   private String brandId;
 
   @Column(name = "START_DATE")
-  private LocalDate startDate;
+  private LocalDateTime startDate;
 
   @Column(name = "END_DATE")
-  private LocalDate endDate;
+  private LocalDateTime endDate;
 
   @Column(name = "PRICE_LIST")
   private String priceList;
@@ -39,7 +39,7 @@ public class PricesEntity {
   @Column(name = "CURR")
   private String currency;
 
-  public PricesEntity(PricesId id, String brandId, LocalDate startDate, LocalDate endDate,
+  public PricesEntity(PricesId id, String brandId, LocalDateTime startDate, LocalDateTime endDate,
       String priceList, String productId, String priority, Double price, String currency) {
     this.id = id;
     this.brandId = brandId;

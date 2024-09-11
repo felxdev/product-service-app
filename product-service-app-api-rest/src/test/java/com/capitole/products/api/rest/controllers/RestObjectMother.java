@@ -3,7 +3,7 @@ package com.capitole.products.api.rest.controllers;
 import com.capitole.products.domain.model.Amount;
 import com.capitole.products.domain.model.Rate;
 import com.capitole.products.domain.model.Rate.RateBuilder;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class RestObjectMother {
 
@@ -12,8 +12,8 @@ public class RestObjectMother {
         .productId("35455")
         .brandId("1")
         .priority("1")
-        .startDate(LocalDate.of(2025, 3, 24))
-        .endDate(LocalDate.of(2025, 3, 24))
+        .startDate(LocalDateTime.of(2025, 3, 24, 10, 0))
+        .endDate(LocalDateTime.of(2025, 3, 24, 10, 0))
         .price(Amount.builder().value(355).currency("EUR").exponent(1).build())
         .appliedRate(1);
   }
