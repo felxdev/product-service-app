@@ -7,9 +7,12 @@
     <groupId>com.capitole.products</groupId>
     <artifactId>product-service-app</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <relativePath>..</relativePath>
   </parent>
 
   <artifactId>product-service-app-application</artifactId>
+
+  <packaging>jar</packaging>
 
   <properties>
     <maven.compiler.source>21</maven.compiler.source>

@@ -3,13 +3,17 @@ package com.capitole.products.infrastructure.repositories.entitydb;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.relational.core.mapping.Table;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "PRICES")
+@Table("PRICES")
 public class PricesEntity {
 
   @EmbeddedId
@@ -39,7 +43,7 @@ public class PricesEntity {
   @Column(name = "CURR")
   private String currency;
 
-  public PricesEntity(PricesId id, String brandId, LocalDateTime startDate, LocalDateTime endDate,
+  /*public PricesEntity(PricesId id, String brandId, LocalDateTime startDate, LocalDateTime endDate,
       String priceList, String productId, String priority, Double price, String currency) {
     this.id = id;
     this.brandId = brandId;
@@ -50,9 +54,5 @@ public class PricesEntity {
     this.priority = priority;
     this.price = price;
     this.currency = currency;
-  }
-
-  public PricesEntity() {
-
-  }
+  }*/
 }

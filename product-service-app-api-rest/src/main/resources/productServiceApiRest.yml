@@ -6,6 +6,7 @@ info:
   version: "1.0-SNAPSHOT"
 servers:
   - url: https//localhost
+    description: Endpoint local environment
 tags:
   - name: products
     description: Products operations
@@ -21,11 +22,10 @@ paths:
         - name: applicationDate
           in: query
           required: true
-          description: Date and time for which the price should be applied
+          description: Application date and time in the format YYYY-MM-DD-HH.mm.ss
           schema:
             type: string
-            format: date
-          example: '2020-06-14T10:00:00'
+            example: "2020-06-15-11.00.00"
         - name: productId
           in: query
           required: true
@@ -73,14 +73,12 @@ components:
           example: 3
         startDate:
           type: string
-          format: date
-          description: Start date range in which the indicated price rate start to applies.
-          example: "2024-04-22"
+          description: Start date and time in the format YYYY-MM-DD-HH.mm.ss
+          example: "2020-06-15-11.00.00"
         endDate:
           type: string
-          format: date
-          description: End date range in which the indicated price rate end to applies.
-          example: "2024-04-22"
+          description: End date and time in the format YYYY-MM-DD-HH.mm.ss
+          example: "2020-06-15-15.00.00"
 
     Amount:
       type: object

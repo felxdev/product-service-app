@@ -9,8 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 
-@RequiredArgsConstructor
 @Repository
+@RequiredArgsConstructor
 public class RateRepositoryImpl implements RateRepository {
 
   private final PricesRepositoryR2dbc pricesRepositoryR2Dbc;
@@ -20,8 +20,8 @@ public class RateRepositoryImpl implements RateRepository {
   @Override
   public Flux<Rate> findByProductIdAndBrandIdAndDate(String productId, String brandId,
       LocalDateTime date) {
-    return pricesRepositoryR2Dbc.findByProductIdAndBrandIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(
-            productId, brandId, date)
+    return pricesRepositoryR2Dbc.findByProductIdAndBrandIdAndStartDateAfterAndEndDateBefore(
+            productId, brandId, date, date)
         .map(rateEntityMapper::asRate);
   }
 }

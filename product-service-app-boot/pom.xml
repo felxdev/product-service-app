@@ -11,6 +11,13 @@
 
   <artifactId>product-service-app-boot</artifactId>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.capitole.products</groupId>
+      <artifactId>product-service-app-api-rest</artifactId>
+    </dependency>
+  </dependencies>
+
   <properties>
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
