@@ -2,7 +2,6 @@ package com.capitole.products.api.rest.controllers;
 
 import com.capitole.products.api.rest.dtos.RateInfoDto;
 import com.capitole.products.application.queries.FindRateByProductIdAndApplicationDateAndBrandIdQueryHandler;
-import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +26,7 @@ public class RatesApiController implements RatesApi {
 
   @Override
   public Mono<ResponseEntity<RateInfoDto>> getRateByProductIdAndBrandIdAndDate(
-      LocalDateTime applicationDate, Integer productId, Integer brandId,
+      String applicationDate, Integer productId, Integer brandId,
       ServerWebExchange exchange) {
 
     return Mono.just(productId)

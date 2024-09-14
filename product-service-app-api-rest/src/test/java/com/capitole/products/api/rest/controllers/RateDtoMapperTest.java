@@ -26,9 +26,12 @@ class RateDtoMapperTest {
         .applicationDate(LocalDateTime.of(2025, 3, 24, 10, 0))
         .brandId("1")
         .build();
+
+    String dateTime = "2025-03-24-10.00.00";
+
     // When
     FindRateByProductIdAndApplicationDateAndBrandIdQuery actual = mapper.asFindRateByProductIdAndApplicationDateAndBrandIdQuery(
-        35455, LocalDateTime.of(2025, 3, 24, 10, 0), 1);
+        35455, dateTime, 1);
 
     // Then
     assertThat(actual).isEqualTo(expected);
@@ -44,8 +47,8 @@ class RateDtoMapperTest {
     Rate rate = Rate.builder()
         .productId("35455")
         .brandId("1")
-        .startDate(LocalDateTime.of(2025, 6, 14, 10, 0))
-        .endDate(LocalDateTime.of(2025, 6, 14, 10, 0))
+        .startDate(LocalDateTime.of(2025, 3, 24, 10, 0))
+        .endDate(LocalDateTime.of(2025, 3, 24, 15, 0))
         .price(Amount.builder()
             .value(355)
             .currency("EUR")
@@ -53,11 +56,14 @@ class RateDtoMapperTest {
         .appliedRate(1)
         .build();
 
+    String startDate = "2025-03-24-10.00.00";
+    String endDate = "2025-03-24-15.00.00";
+
     RateInfoDto expected = new RateInfoDto();
     expected.setProductId("35455");
     expected.setBrandId(1);
-    expected.setStartDate(LocalDateTime.of(2025, 6, 14, 10, 0));
-    expected.setEndDate(LocalDateTime.of(2025, 6, 14, 10, 0));
+    expected.setStartDate(startDate);
+    expected.setEndDate(endDate);
     expected.setPrice(amountDto);
     expected.appliedRateId(1);
 
