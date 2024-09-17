@@ -15,7 +15,6 @@
   <artifactId>product-service-app</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-
   <name>products</name>
   <description>products app</description>
 
