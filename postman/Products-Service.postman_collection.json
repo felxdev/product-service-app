@@ -1,0 +1,44 @@
+{
+	"info": {
+		"_postman_id": "cd2e57a2-afe0-40ba-b577-f736d4acb43b",
+		"name": "Products-Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6040794"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/v1/rates?applicationDate=2020-06-15 17:00:00&productId=35455&brandId=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/rates?applicationDate=2020-06-15 17:00:00&productId=35455&brandId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"rates"
+					],
+					"query": [
+						{
+							"key": "applicationDate",
+							"value": "2020-06-15 17:00:00"
+						},
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

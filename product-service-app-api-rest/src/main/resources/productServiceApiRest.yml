@@ -25,7 +25,7 @@ paths:
           description: Application date and time in the format YYYY-MM-DD-HH.mm.ss
           schema:
             type: string
-            example: "2020-06-15-11.00.00"
+            example: "2020-06-15 11:00:00"
         - name: productId
           in: query
           required: true
