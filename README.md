@@ -8,6 +8,12 @@ App for product management
 
 ## 🚀 Getting started
 
+#### MAVEN version
+```3.9.9```
+
+#### JDK version
+```21```
+
 #### Docker
 
 ```Load the docker postgres image```
