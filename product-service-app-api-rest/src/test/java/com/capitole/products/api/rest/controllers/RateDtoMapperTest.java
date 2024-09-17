@@ -7,7 +7,6 @@ import com.capitole.products.api.rest.dtos.RateInfoDto;
 import com.capitole.products.application.queries.FindRateByProductIdAndApplicationDateAndBrandIdQuery;
 import com.capitole.products.domain.model.Amount;
 import com.capitole.products.domain.model.Rate;
-import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
@@ -22,12 +21,12 @@ class RateDtoMapperTest {
   void asFindRateByProductIdAndApplicationDateAndBrandIdQuery_ShouldMap_OnSucess() {
     // Given
     FindRateByProductIdAndApplicationDateAndBrandIdQuery expected = FindRateByProductIdAndApplicationDateAndBrandIdQuery.builder()
-        .productId("35455")
-        .applicationDate(LocalDateTime.of(2025, 3, 24, 10, 0))
-        .brandId("1")
+        .productId(35455)
+        .applicationDate("2025-03-24 10:00:00")
+        .brandId(1)
         .build();
 
-    String dateTime = "2025-03-24-10.00.00";
+    String dateTime = "2025-03-24 10:00:00";
 
     // When
     FindRateByProductIdAndApplicationDateAndBrandIdQuery actual = mapper.asFindRateByProductIdAndApplicationDateAndBrandIdQuery(
@@ -45,10 +44,10 @@ class RateDtoMapperTest {
     amountDto.setCurrency("EUR");
 
     Rate rate = Rate.builder()
-        .productId("35455")
-        .brandId("1")
-        .startDate(LocalDateTime.of(2025, 3, 24, 10, 0))
-        .endDate(LocalDateTime.of(2025, 3, 24, 15, 0))
+        .productId(35455)
+        .brandId(1)
+        .startDate("2025-03-24 10:00:00")
+        .endDate("2025-03-24 15:00:00")
         .price(Amount.builder()
             .value(355)
             .currency("EUR")
@@ -56,14 +55,14 @@ class RateDtoMapperTest {
         .appliedRate(1)
         .build();
 
-    String startDate = "2025-03-24-10.00.00";
-    String endDate = "2025-03-24-15.00.00";
+    String startDateExpected = "2025-03-24 10:00:00";
+    String endDateExpected = "2025-03-24 15:00:00";
 
     RateInfoDto expected = new RateInfoDto();
     expected.setProductId("35455");
     expected.setBrandId(1);
-    expected.setStartDate(startDate);
-    expected.setEndDate(endDate);
+    expected.setStartDate(startDateExpected);
+    expected.setEndDate(endDateExpected);
     expected.setPrice(amountDto);
     expected.appliedRateId(1);
 
